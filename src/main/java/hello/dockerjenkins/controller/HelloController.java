@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "hello docker";
+        return "hello docker modify layer,multistage";
     }
 }
