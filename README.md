@@ -27,7 +27,7 @@ docker images rm [REPOSITORY]
 
 ---
 ## 최적화 방법
-소스 수정 후 gradlew build 후 
+소스 수정 후 gradlew build 후
 image build 하면 새로운 image로 인식이되고 jar 사이즈만큼 추가됨
 프로젝트가 커질수록 시간이 소요된다.
 
@@ -89,3 +89,20 @@ COPY --from=builder application/snapshot-dependencies/ ./
 COPY --from=builder application/application/ ./
 ENTRYPOINT ["java","org.springframework.boot.loader.JarLauncher"]
 ```
+---
+## Docker hub push, pull
+#### repository 생성
+* docker repository 생성(ingduk2/hello-docker)
+~~~
+repository의 command
+docker push ingduk2/hello-docker:tagname
+~~~
+#### image build
+* docker build -t ingduk2/hello-docker:1.0 (repository에 맞추어 build)    
+  또는
+* docker build -t hello
+* docker tag hello ingduk2/hello-docker:1.0 (tag 명령어로 link를 만들어 준다.)
+#### push
+* docker push ingduk2/hello-docker:1.0
+#### pull
+* docker pull ingduk2/hello-docker:1.0
